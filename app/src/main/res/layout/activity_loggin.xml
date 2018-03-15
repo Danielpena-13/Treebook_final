@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.daniel13pe.treebook_1.LogginActivity">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="5"
+       android:orientation="horizontal">
+
+       <ImageView
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_weight="1"
+           android:src="@android:drawable/ic_menu_edit"/>
+       <TextView
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_weight="5"
+           android:text="Actividad Loggin"
+           android:gravity="center"
+           android:textSize="30sp"/>
+   </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.02"
+            android:orientation="horizontal"
+            android:layout_margin="3dp">
+
+            <ImageView
+                android:id="@+id/icorreo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_dialog_email"
+                android:layout_margin="4dp"/>
+            <EditText
+                android:id="@+id/ecorreo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
+                android:inputType="textWebEmailAddress"
+                android:hint="correo-electronico"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.02"
+            android:orientation="horizontal"
+            android:layout_margin="3dp">
+
+            <ImageView
+                android:id="@+id/icontra"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_lock_idle_lock" />
+            <EditText
+                android:id="@+id/econtra"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
+                android:inputType="textWebPassword"
+                android:gravity="center"
+                android:hint="contraseña"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.05"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
+            <Button
+                android:id="@+id/biniciosecion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="OnClickInicioSesion"
+                android:text="Iniciar Sesion"
+                android:layout_margin="15dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registrate!"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp"
+                android:id="@+id/tregistrarse"
+                android:onClick="OnclickRegistrarse"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
