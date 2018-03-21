@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/fondo1"
     tools:context="com.daniel13pe.treebook_1.PerfilActivity">
 
     <TextView
@@ -13,7 +14,9 @@
         android:layout_weight="2"
         android:textSize="40dp"
         android:gravity="center"
-        android:text="Mi Perfil"/>
+        android:text="Mi Perfil"
+        android:textStyle="bold"
+        android:textColor="@color/darkviolet"/>
     <ImageView
         android:id="@+id/iuserperfil"
         android:layout_width="match_parent"
@@ -31,7 +34,8 @@
         android:layout_weight="7"
         android:textSize="23dp"
         android:gravity="left"
-
+        android:textStyle="bold"
+        android:textColor="@color/black"
         android:layout_margin="30dp"/>
 
 </LinearLayout>

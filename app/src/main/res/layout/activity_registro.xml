@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/fondo1"
     tools:context="com.daniel13pe.treebook_1.RegistroActivity">
 
     <TextView
@@ -12,7 +13,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Actividad de Registro!"
+        android:text="Ingresa Algunos Datos!"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         android:textSize="30dp"/>
 
     <LinearLayout
@@ -36,7 +39,11 @@
             android:layout_weight="6"
             android:hint="nombre-usuario"
             android:singleLine="true"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionNext"
+            android:textColorHint="@color/gray"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:gravity="center"/>
     </LinearLayout>
 
@@ -60,8 +67,12 @@
             android:layout_weight="5"
             android:hint="correo-electronico"
             android:singleLine="true"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionNext"
             android:inputType="textWebEmailAddress"
+            android:textColorHint="@color/gray"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:gravity="center"/>
     </LinearLayout>
 
@@ -84,8 +95,12 @@
             android:layout_weight="4"
             android:gravity="center"
             android:singleLine="true"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionNext"
             android:inputType="textWebPassword"
+            android:textColorHint="@color/gray"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:hint="contraseña"/>
     </LinearLayout>
 
@@ -110,6 +125,9 @@
             android:singleLine="true"
             android:imeOptions="actionDone"
             android:inputType="textWebPassword"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:hint="repetir-contraseña"/>
     </LinearLayout>
 
@@ -124,6 +142,10 @@
             android:layout_height="wrap_content"
             android:text="Guardar"
             android:id="@+id/bguardar"
+            android:textSize="18dp"
+            android:layout_margin="15dp"
+            android:background="@color/darkviolet"
+            android:textColor="@color/white"
             android:onClick="OnclickGuardar"/>
     </LinearLayout>
 

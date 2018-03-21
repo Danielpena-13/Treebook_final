@@ -3,8 +3,11 @@ package com.daniel13pe.treebook_1;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import javax.security.auth.Destroyable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,13 +29,18 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
     public void onBackPressed() {
-        Intent intent7 = new Intent(MainActivity.this,LogginActivity.class);
-        intent7.putExtra("correo1",scorreo);
-        intent7.putExtra("contra1",scontra);
-        setResult(RESULT_OK, intent7);
+        Intent intent = new Intent(MainActivity.this,LogginActivity.class);
+        setResult(3, intent);
         finish();
+        Log.v("por aca","Este es");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.v("perfil", "ActivityResult");
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 
     @Override
@@ -44,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
             intent6.putExtra("correo1",scorreo);
             intent6.putExtra("contra1",scontra);
             intent6.putExtra("nombre",susuario);
-            startActivityForResult(intent6,1002);
+            startActivity(intent6);
+            finish();
         }if(id == R.id.mClose){
             Intent intent = new Intent(MainActivity.this,LogginActivity.class);
             intent.putExtra("correo1",scorreo);

@@ -4,13 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/captura"
     tools:context="com.daniel13pe.treebook_1.MainActivity">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2"
         android:gravity="center"
-        android:textSize="30dp"
-        android:text="Actividad Principal \n Aplicacion!"/>
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
+        android:layout_marginTop="50dp"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:text="TreeBook!:\nEs una Herramienta que nos permite explorar y conocer la Fauna y Flora de un lugar determinado, Aprendiendo mas sobre los Arboles y lo que tienen para ensenarnos\n... "
+        />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/treebook"
+        android:layout_gravity="center"/>
 </LinearLayout>

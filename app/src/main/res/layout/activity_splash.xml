@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context="com.daniel13pe.treebook_1.SplashActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Splash!!  :D"
-        android:textSize="30sp"/>
+        android:background="@drawable/plantas"
+        android:src="@drawable/treebook" />
 
 </LinearLayout>

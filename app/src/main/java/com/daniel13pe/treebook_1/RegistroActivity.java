@@ -44,7 +44,7 @@ public class RegistroActivity extends AppCompatActivity {
                     ImageView icon_correo1 = (ImageView) findViewById(R.id.iusuario);
                     Drawable d = icon_correo1.getDrawable();
                     d = DrawableCompat.wrap(d);
-                    DrawableCompat.setTint(d, ContextCompat.getColor(RegistroActivity.this, R.color.colorAccent));
+                    DrawableCompat.setTint(d, ContextCompat.getColor(RegistroActivity.this, R.color.darkviolet));
                 }
             }
         });
@@ -56,7 +56,7 @@ public class RegistroActivity extends AppCompatActivity {
                     ImageView icon_correo1 = (ImageView) findViewById(R.id.icorreo1);
                     Drawable d = icon_correo1.getDrawable();
                     d = DrawableCompat.wrap(d);
-                    DrawableCompat.setTint(d, ContextCompat.getColor(RegistroActivity.this, R.color.colorAccent));
+                    DrawableCompat.setTint(d, ContextCompat.getColor(RegistroActivity.this, R.color.darkviolet));
                 }
             }
         });
@@ -68,7 +68,7 @@ public class RegistroActivity extends AppCompatActivity {
                     ImageView icon_correo1 = (ImageView) findViewById(R.id.icontra1);
                     Drawable d = icon_correo1.getDrawable();
                     d = DrawableCompat.wrap(d);
-                    DrawableCompat.setTint(d, ContextCompat.getColor(RegistroActivity.this, R.color.colorAccent));
+                    DrawableCompat.setTint(d, ContextCompat.getColor(RegistroActivity.this, R.color.darkviolet));
                 }
             }
         });
@@ -80,7 +80,7 @@ public class RegistroActivity extends AppCompatActivity {
                     ImageView icon_correo1 = (ImageView) findViewById(R.id.icontra2);
                     Drawable d = icon_correo1.getDrawable();
                     d = DrawableCompat.wrap(d);
-                    DrawableCompat.setTint(d, ContextCompat.getColor(RegistroActivity.this, R.color.colorAccent));
+                    DrawableCompat.setTint(d, ContextCompat.getColor(RegistroActivity.this, R.color.darkviolet));
                 }
             }
         });

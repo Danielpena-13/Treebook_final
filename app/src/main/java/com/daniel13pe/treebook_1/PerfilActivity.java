@@ -33,6 +33,15 @@ public class PerfilActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        Intent intent7 = new Intent(PerfilActivity.this,MainActivity.class);
+        intent7.putExtra("correo1",scorreo);
+        intent7.putExtra("contra1",scontra);
+        startActivityForResult(intent7,1005);
+        finish();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
@@ -40,13 +49,13 @@ public class PerfilActivity extends AppCompatActivity {
             Intent intent2 = new Intent(PerfilActivity.this,MainActivity.class);
             intent2.putExtra("correo1",scorreo);
             intent2.putExtra("contra1",scontra);
-            setResult(RESULT_OK, intent2);
+            startActivityForResult(intent2,1004);
             finish();
         }else if(id == R.id.mcerrar2){
-            Intent intent6 = new Intent(PerfilActivity.this,LogginActivity.class);
+            Intent intent6 = new Intent();
             intent6.putExtra("correo1",scorreo);
             intent6.putExtra("contra1",scontra);
-            startActivity(intent6);
+            setResult(13,intent6);
             finish();
         }
         return super.onOptionsItemSelected(item);
