@@ -14,8 +14,8 @@
        android:layout_weight="5"
        android:orientation="vertical"
        android:background="@drawable/treebook"
-       android:layout_marginRight="83dp"
-       android:layout_marginLeft="83dp"
+       android:layout_marginRight="86dp"
+       android:layout_marginLeft="86dp"
        android:layout_marginTop="10dp">
        <TextView
            android:layout_width="match_parent"
@@ -50,9 +50,9 @@
                 android:id="@+id/icorreo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_margin="6dp"
                 android:layout_weight="1"
-                android:src="@android:drawable/ic_dialog_email"
-                android:layout_margin="6dp"/>
+                android:src="@android:drawable/ic_dialog_email" />
             <EditText
                 android:id="@+id/ecorreo"
                 android:layout_width="0dp"
@@ -107,19 +107,45 @@
             <Button
                 android:id="@+id/biniciosecion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"
+                android:gravity="center"
                 android:onClick="OnClickInicioSesion"
-                android:text="Iniciar Sesion"
+                android:text="INICIAR SESION"
                 android:textSize="18dp"
                 android:background="@color/darkviolet"
                 android:textColor="@color/white"
                 android:layout_margin="15dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.1"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/login_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"/>
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/btnSignInGoogle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="7dp" />
+            </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:text="Registrate!"
                 android:gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
                 android:textColor="@color/blue"
                 android:textSize="23sp"
                 android:id="@+id/tregistrarse"
@@ -127,6 +153,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

@@ -34,7 +34,7 @@ public class PerfilActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent7 = new Intent(PerfilActivity.this,MainActivity.class);
+        Intent intent7 = new Intent(PerfilActivity.this,NavigatorActivity.class);
         intent7.putExtra("correo1",scorreo);
         intent7.putExtra("contra1",scontra);
         startActivityForResult(intent7,1005);
@@ -46,7 +46,7 @@ public class PerfilActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.mPrincipal2){
-            Intent intent2 = new Intent(PerfilActivity.this,MainActivity.class);
+            Intent intent2 = new Intent(PerfilActivity.this,NavigatorActivity.class);
             intent2.putExtra("correo1",scorreo);
             intent2.putExtra("contra1",scontra);
             startActivityForResult(intent2,1004);
