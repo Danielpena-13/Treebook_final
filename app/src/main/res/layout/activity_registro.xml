@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/face"
-            android:layout_margin="13dp"
+            android:layout_margin="8dp"
             android:layout_gravity="center"/>
         <EditText
             android:id="@+id/enombreuser"
@@ -58,13 +58,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@android:drawable/ic_dialog_email"
+            android:src="@drawable/mail"
             android:layout_margin="13dp"/>
         <EditText
             android:id="@+id/ecorreo1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_weight="5.7"
             android:hint="correo-electronico"
             android:singleLine="true"
             android:imeOptions="actionNext"
@@ -87,12 +87,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@android:drawable/ic_lock_idle_lock" />
+            android:layout_margin="13dp"
+            android:src="@drawable/lock" />
         <EditText
             android:id="@+id/econtra1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
+            android:layout_weight="6"
             android:gravity="center"
             android:singleLine="true"
             android:imeOptions="actionNext"
@@ -115,12 +116,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@android:drawable/ic_lock_idle_lock" />
+            android:layout_margin="13dp"
+            android:src="@drawable/lock" />
         <EditText
             android:id="@+id/econtra2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
+            android:layout_weight="6"
             android:gravity="center"
             android:singleLine="true"
             android:imeOptions="actionDone"

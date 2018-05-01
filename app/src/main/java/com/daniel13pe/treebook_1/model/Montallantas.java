@@ -1,17 +1,25 @@
 package com.daniel13pe.treebook_1.model;
 
 public class Montallantas {
-    String foto, nombre, valor;
+    String foto, nombre, valor, id;
 
     public Montallantas() {
     }
 
-    public Montallantas(String foto, String nombre, String valor) {
+    public Montallantas(String foto, String nombre, String valor, String id) {
+        this.id = id;
         this.foto = foto;
         this.nombre = nombre;
         this.valor = valor;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getFoto() {
         return foto;

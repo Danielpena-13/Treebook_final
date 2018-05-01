@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">Treebook_1</string>
+    <string name="app_name">Treebook!</string>
     <string name="perfil">Mi Perfil</string>
     <string name="cerrar">CerrarSesion</string>
     <string name="principal">Principal</string>
-    <string name="tree">TreeBook</string>
+    <string name="tree">TreeBook!</string>
     <string name="facebook_app_id">1819104234844547</string>
+    <string name="google_maps_key">AIzaSyDBBV2mrJu58QjMpyLZO9M-cRuK8w9VM-M</string>
     <string name="fb_login_protocol_scheme">fb1819104234844547</string>
     <string name="title_activity_princi">PrinciActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -14,5 +15,13 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_navigator">NavigatorActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_montallantas">MontallantasActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 </resources>

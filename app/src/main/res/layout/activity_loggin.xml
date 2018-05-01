@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +10,7 @@
     android:orientation="vertical"
     android:background="@drawable/fondo1"
     tools:context="com.daniel13pe.treebook_1.LogginActivity">
+
 
    <LinearLayout
        android:layout_width="match_parent"
@@ -27,9 +31,9 @@
            android:layout_weight="5"
            android:text="@string/tree"
            android:gravity="center"
-           android:textColor="@color/black"
+           android:textColor="@color/saddlebrown"
            android:textStyle="bold"
-           android:textSize="33sp"/>
+           android:textSize="38sp"/>
    </LinearLayout>
 
     <LinearLayout
@@ -42,7 +46,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.02"
+            android:layout_weight="0.018"
             android:orientation="horizontal"
             android:layout_margin="3dp">
 
@@ -51,19 +55,19 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="6dp"
-                android:layout_weight="1"
-                android:src="@android:drawable/ic_dialog_email" />
+                android:layout_weight="1.1"
+                android:src="@drawable/mail" />
             <EditText
                 android:id="@+id/ecorreo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="5"
+                android:layout_weight="7"
                 android:singleLine="true"
                 android:imeOptions="actionDone"
                 android:inputType="textWebEmailAddress"
                 android:hint="correo-electronico"
                 android:textColorHint="@color/gray"
-                android:textSize="24dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:gravity="center"/>
@@ -72,7 +76,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.02"
+            android:layout_weight="0.018"
             android:orientation="horizontal"
             android:layout_margin="3dp">
 
@@ -81,15 +85,15 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.1"
-                android:src="@android:drawable/ic_lock_idle_lock" />
+                android:src="@drawable/lock" />
             <EditText
                 android:id="@+id/econtra"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="5"
+                android:layout_weight="6"
                 android:singleLine="true"
                 android:textColorHint="@color/gray"
-                android:textSize="24dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:imeOptions="actionDone"
@@ -103,7 +107,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.05"
             android:orientation="vertical"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="5dp">
             <Button
                 android:id="@+id/biniciosecion"
                 android:layout_width="match_parent"
@@ -144,6 +148,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Registrate!"
+                android:layout_marginBottom="3dp"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:textColor="@color/blue"
@@ -155,3 +160,4 @@
     </LinearLayout>
 
 </LinearLayout>
+
