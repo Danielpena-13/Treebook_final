@@ -52,9 +52,11 @@ public class LogginActivity extends AppCompatActivity implements GoogleApiClient
 
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private EditText el1, el2;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
+
 
     private GoogleApiClient gooogleApiClient;
     private SignInButton btnSignInGoogle;
@@ -66,6 +68,14 @@ public class LogginActivity extends AppCompatActivity implements GoogleApiClient
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loggin);
 
+        final   FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        final   FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        if(firebaseUser != null){
+            Intent i = new Intent(LogginActivity.this, NavigatorActivity.class);
+            startActivity(i);
+            finish();
+        }
         inicializar();
         getHashes();
 
@@ -73,6 +83,7 @@ public class LogginActivity extends AppCompatActivity implements GoogleApiClient
         btnSignInGoogle = findViewById(R.id.btnSignInGoogle);
         loginButton.setReadPermissions("email","public_profile");
         callbackManager = CallbackManager.Factory.create();
+        el1 = findViewById(R.id.ecorreo);
 
         //Facebook LogIn Button---------------------------------------------------------------------
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -105,6 +116,7 @@ public class LogginActivity extends AppCompatActivity implements GoogleApiClient
         ecorreo = findViewById(R.id.ecorreo);
         econtra = findViewById(R.id.econtra);
     }
+
 
     private void signInFacebook(AccessToken accessToken) {///FACEBOOK-------------
         //Toast.makeText(LogginActivity.this,"face SignIn",Toast.LENGTH_SHORT).show();
@@ -152,7 +164,7 @@ public class LogginActivity extends AppCompatActivity implements GoogleApiClient
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if(firebaseUser != null){
-                    Log.d("FirebaseUser", "Usuario Logeado"+firebaseUser.getEmail());
+                    JumpMain();
                 }else{
                     Log.d("FirebaseUser", "No hay Usuario Logeado");
                 }
@@ -263,8 +275,6 @@ public class LogginActivity extends AppCompatActivity implements GoogleApiClient
             scorreo = data.getExtras().getString("correo1");
             scontra = data.getExtras().getString("contra1");
             susuario = data.getExtras().getString("nombre");
-          //  ecorreo.setText("");
-          //  econtra.setText("");
 
         }else if(requestCode == 1001 && resultCode == RESULT_OK ){
             scorreo = data.getExtras().getString("correo1");

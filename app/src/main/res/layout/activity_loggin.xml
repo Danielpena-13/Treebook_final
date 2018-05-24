@@ -57,20 +57,25 @@
                 android:layout_margin="6dp"
                 android:layout_weight="1.1"
                 android:src="@drawable/mail" />
-            <EditText
-                android:id="@+id/ecorreo"
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="7"
-                android:singleLine="true"
-                android:imeOptions="actionDone"
-                android:inputType="textWebEmailAddress"
-                android:hint="correo-electronico"
-                android:textColorHint="@color/gray"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:gravity="center"/>
+                android:layout_weight="7">
+                <EditText
+                    android:id="@+id/ecorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:imeOptions="actionDone"
+                    android:inputType="textWebEmailAddress"
+                    android:hint="correo-electronico"
+                    android:textColorHint="@color/gray"
+                    android:textSize="21dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:gravity="center" />
+            </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -84,22 +89,28 @@
                 android:id="@+id/icontra"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.1"
+                android:layout_weight="1.3"
                 android:src="@drawable/lock" />
-            <EditText
-                android:id="@+id/econtra"
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="6"
-                android:singleLine="true"
-                android:textColorHint="@color/gray"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:imeOptions="actionDone"
-                android:inputType="textWebPassword"
-                android:gravity="center"
-                android:hint="contraseña"/>
+                android:layout_weight="7">
+                <EditText
+                    android:id="@+id/econtra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textColorHint="@color/gray"
+                    android:textSize="21dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:imeOptions="actionDone"
+                    android:inputType="textWebPassword"
+                    android:gravity="center"
+                    android:hint="contraseña"/>
+            </android.support.design.widget.TextInputLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -119,7 +130,7 @@
                 android:textSize="18dp"
                 android:background="@color/darkviolet"
                 android:textColor="@color/white"
-                android:layout_margin="15dp"/>
+                android:layout_margin="15dp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

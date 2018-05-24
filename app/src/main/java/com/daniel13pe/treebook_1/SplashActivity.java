@@ -6,16 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final long SPLASH_DELAY = 1850;
+    private static final long SPLASH_DELAY = 1213;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        yaexiste();
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -32,5 +38,9 @@ public class SplashActivity extends AppCompatActivity {
         };
         Timer timer = new Timer();
         timer.schedule(task, SPLASH_DELAY);
+    }
+
+    private void yaexiste() {
+
     }
 }

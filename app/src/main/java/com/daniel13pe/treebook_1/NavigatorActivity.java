@@ -1,7 +1,14 @@
 package com.daniel13pe.treebook_1;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daniel13pe.treebook_1.model.Usuarios;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -34,6 +42,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+
 public class NavigatorActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
 
@@ -43,6 +53,7 @@ public class NavigatorActivity extends AppCompatActivity
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
 
+    private  FirebaseUser firebaseUser;
     private GoogleApiClient gooogleApiClient;
     private SignInButton btnSignInGoogle;
     int LOGIN_CON_GOOGLE=1;
@@ -52,6 +63,8 @@ public class NavigatorActivity extends AppCompatActivity
     private  FloatingActionButton fab;
 
     private DatabaseReference databaseReference;
+
+    String name="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,34 +76,35 @@ public class NavigatorActivity extends AppCompatActivity
         fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
 
-        final   FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        final   FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
         if(firebaseUser == null){
             Intent i = new Intent(NavigatorActivity.this, LogginActivity.class);
             startActivity(i);
             finish();
         }
-        inicializar();
 
-        UserImage = findViewById(R.id.imageView);
-        UserEmail = findViewById(R.id.textView);
+        name = Environment.getExternalStorageDirectory()+"/foto.jpg";
         fab = findViewById(R.id.fab);
 
-        HallazgoFragment Navi1 = new HallazgoFragment();
+        inicializar();
+        vibracion();
+
+        MontallantasFragment Navi1 = new MontallantasFragment();
         ft.add(R.id.contenedorFrame, Navi1).commit();
 
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                      //  .setAction("Action", null).show();
+                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                Uri salida = Uri.fromFile(new File(name));
+                i.putExtra(MediaStore.EXTRA_OUTPUT,salida);
+                startActivity(i);
             }
         });
-
-//      UserEmail.setText(firebaseUser.getEmail());
-//      Picasso.get().load(firebaseUser.getPhotoUrl()).into(UserImage);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -98,11 +112,31 @@ public class NavigatorActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        //Edicion Parametros Navigation!!
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        //Correo:
+        TextView UserName = (TextView) headerView.findViewById(R.id.textView);
+        UserName.setText(firebaseUser.getEmail().toString());
+        //Foto:
+        ImageView UserPhoto = (ImageView) headerView.findViewById(R.id.imageView);
+        Picasso.get().load(firebaseUser.getPhotoUrl()).into(UserPhoto);
+
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private void vibracion() {
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v.vibrate(VibrationEffect.createOneShot(130,VibrationEffect.DEFAULT_AMPLITUDE));
+        }else{
+            //deprecated in API 26
+            v.vibrate(130);
+        }
+    }
+
     private void inicializar() {
+
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -201,10 +235,10 @@ public class NavigatorActivity extends AppCompatActivity
             RecorridoFragment Navi3 = new RecorridoFragment();
             ft.replace(R.id.contenedorFrame, Navi3).commit();
         } else if (id == R.id.nav_notifi) {
-            //NotificacionFragment Navi4 = new NotificacionFragment();
-            //ft.replace(R.id.contenedorFrame, Navi4).commit();
-            Intent intent2 = new Intent(NavigatorActivity.this,MontallantasActivity.class);
-            startActivity(intent2);
+            NotificacionFragment Navi4 = new NotificacionFragment();
+            ft.replace(R.id.contenedorFrame, Navi4).commit();
+            //Intent intent2 = new Intent(NavigatorActivity.this,MontallantasActivity.class);
+            //startActivity(intent2);
         } else if (id == R.id.nav_confi) {
            // ConfiguraFragment Navi5 = new ConfiguraFragment();
            // ft.replace(R.id.contenedorFrame, Navi5).commit();
