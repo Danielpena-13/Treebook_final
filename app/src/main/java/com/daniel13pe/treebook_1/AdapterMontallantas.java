@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class AdapterMontallantas extends RecyclerView.Adapter<AdapterMontallanta
     private ArrayList<Montallantas> montallantasList;
     private int resource;
     private Activity activity;
+    String Arbol="";
 
     public AdapterMontallantas(ArrayList<Montallantas> montallantasList) {
         this.montallantasList = montallantasList;
@@ -45,8 +47,17 @@ public class AdapterMontallantas extends RecyclerView.Adapter<AdapterMontallanta
 
     @Override
     public void onBindViewHolder(MontallantasViewHolder holder, int position) {
-        Montallantas montallantas = montallantasList.get(position);
+        final Montallantas montallantas = montallantasList.get(position);
         holder.bindMontallantas(montallantas, activity);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("FUCK","3"+Arbol);
+                Intent intent = new Intent(activity, DetallesActivity.class);
+                intent.putExtra("Arbol",montallantas.getNombre().toString());
+                activity.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -71,15 +82,14 @@ public class AdapterMontallantas extends RecyclerView.Adapter<AdapterMontallanta
             tNombre.setText(montallantas.getNombre());
             tValor.setText(montallantas.getValor());
             Picasso.get().load(montallantas.getFoto()).into(iFoto);
-            tNombre.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Melo el Nombre", Snackbar.LENGTH_SHORT)
-                      .setAction("Action", null).show();
-                }
-            });
             tNombrecien.setText(montallantas.getNombrecien());
         }
+    }
+
+    public void enviarDatos(String ArbolN) {
+
+        // Actualizas los valores de las variables
+        Arbol=ArbolN+"Esto";
     }
 
 }

@@ -1,6 +1,7 @@
 package com.daniel13pe.treebook_1;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -14,6 +15,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -28,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daniel13pe.treebook_1.model.Montallantas;
 import com.daniel13pe.treebook_1.model.Usuarios;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
@@ -43,6 +46,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class NavigatorActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
@@ -60,11 +64,13 @@ public class NavigatorActivity extends AppCompatActivity
 
     private  ImageView UserImage;
     private TextView UserEmail;
-    private  FloatingActionButton fab;
+    private com.getbase.floatingactionbutton.FloatingActionButton fab1;
+    private com.getbase.floatingactionbutton.FloatingActionButton fab2;
 
     private DatabaseReference databaseReference;
 
-    String name="";
+    String name="", retorno="", aux="3";
+    private ArrayList<Montallantas> montallantasList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +79,11 @@ public class NavigatorActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fm = getSupportFragmentManager();
-        ft = fm.beginTransaction();
-
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+
+        fm = getSupportFragmentManager();
+        ft = fm.beginTransaction();
 
         if(firebaseUser == null){
             Intent i = new Intent(NavigatorActivity.this, LogginActivity.class);
@@ -86,15 +92,14 @@ public class NavigatorActivity extends AppCompatActivity
         }
 
         name = Environment.getExternalStorageDirectory()+"/foto.jpg";
-        fab = findViewById(R.id.fab);
+        fab1 = findViewById(R.id.fbCamara);
+        fab2 = findViewById(R.id.fbQr);
 
         inicializar();
-        vibracion();
+        retornoData();
 
-        MontallantasFragment Navi1 = new MontallantasFragment();
-        ft.add(R.id.contenedorFrame, Navi1).commit();
-
-        fab.setOnClickListener(new View.OnClickListener() {
+        //Accion Boton Camara
+        fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -103,6 +108,15 @@ public class NavigatorActivity extends AppCompatActivity
                 Uri salida = Uri.fromFile(new File(name));
                 i.putExtra(MediaStore.EXTRA_OUTPUT,salida);
                 startActivity(i);
+            }
+        });
+
+        //Accion Botton QR
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NavigatorActivity.this,QRActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -125,13 +139,31 @@ public class NavigatorActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void vibracion() {
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            v.vibrate(VibrationEffect.createOneShot(130,VibrationEffect.DEFAULT_AMPLITUDE));
-        }else{
-            //deprecated in API 26
-            v.vibrate(130);
+    private void retornoData() {
+
+        if(!getIntent().equals(null)) {
+            fm = getSupportFragmentManager();
+            ft = fm.beginTransaction();
+
+            Bundle extras = getIntent().getExtras();
+            HallazgoFragment Navi9 = new HallazgoFragment();
+            retorno = extras.getString("Arbol");
+
+            aux=retorno+aux;
+            if(aux.equals(null+"3")){
+                MontallantasFragment Navi1 = new MontallantasFragment();
+                ft.add(R.id.contenedorFrame, Navi1).commit();
+
+            }else{
+                montallantasList = new ArrayList<>();
+                AdapterMontallantas adapterMontallantas = new AdapterMontallantas(montallantasList,
+                        R.layout.cardview_detalle,NavigatorActivity.this);
+                adapterMontallantas.enviarDatos(retorno);
+                Bundle info = new Bundle();
+                info.putString("Tree", retorno);
+                Navi9.setArguments(info);
+                ft.replace(R.id.contenedorFrame, Navi9).commit();
+            }
         }
     }
 
@@ -172,7 +204,7 @@ public class NavigatorActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.navigator, menu);
+        getMenuInflater().inflate(R.menu.back_press, menu);
         return true;
     }
 
@@ -183,9 +215,12 @@ public class NavigatorActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        if(id == R.id.mFiltrar){
+            createMultipleListDialog();
+        }
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-
+        if (id == android.R.id.home) {
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -226,11 +261,11 @@ public class NavigatorActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_hallazgo) {
+            HallazgoFragment Navi2 = new HallazgoFragment();
+            ft.replace(R.id.contenedorFrame, Navi2).commit();
+        } else if (id == R.id.nav_busqueda) {
             MontallantasFragment Navi1 = new MontallantasFragment();
             ft.replace(R.id.contenedorFrame, Navi1).commit();
-        } else if (id == R.id.nav_busqueda) {
-            BusquedaFragment Navi2 = new BusquedaFragment();
-            ft.replace(R.id.contenedorFrame, Navi2).commit();
         } else if (id == R.id.nav_recorrido) {
             RecorridoFragment Navi3 = new RecorridoFragment();
             ft.replace(R.id.contenedorFrame, Navi3).commit();
@@ -240,10 +275,10 @@ public class NavigatorActivity extends AppCompatActivity
             //Intent intent2 = new Intent(NavigatorActivity.this,MontallantasActivity.class);
             //startActivity(intent2);
         } else if (id == R.id.nav_confi) {
-           // ConfiguraFragment Navi5 = new ConfiguraFragment();
-           // ft.replace(R.id.contenedorFrame, Navi5).commit();
-            Intent intent = new Intent(NavigatorActivity.this,PruebaActivity.class);
-            startActivity(intent);
+            ConfiguraFragment Navi5 = new ConfiguraFragment();
+            ft.replace(R.id.contenedorFrame, Navi5).commit();
+            // Intent intent = new Intent(NavigatorActivity.this,PruebaActivity.class);
+            //startActivity(intent);
         } else if (id == R.id.nav_salir) {
             cerrarSesion();
         }
@@ -256,6 +291,36 @@ public class NavigatorActivity extends AppCompatActivity
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    public void createMultipleListDialog() {
+
+        AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+        final ArrayList itemsSeleccionados = new ArrayList();
+
+        CharSequence[] items = new CharSequence[3];
+
+        items[0] = "Familia";
+        items[1] = "SubEspecie";
+        items[2] = "Lugar de Hallazgo";
+
+        builder2.setTitle("Filtrar Por:")
+                .setMultiChoiceItems(items, null, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                        if (isChecked) {
+                            // Guardar indice seleccionado
+                            itemsSeleccionados.add(which);
+                            Toast.makeText(NavigatorActivity.this, "Checks seleccionados:(" + itemsSeleccionados.size() + ")",
+                                    Toast.LENGTH_SHORT).show();
+                        } else if (itemsSeleccionados.contains(which)) {
+                            // Remover indice sin selección
+                            itemsSeleccionados.remove(Integer.valueOf(which));
+                        }
+                    }
+                });
+        AlertDialog alertDialog2 = builder2.create();
+        alertDialog2.show();
     }
 
     @Override

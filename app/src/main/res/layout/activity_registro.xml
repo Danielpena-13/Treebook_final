@@ -146,8 +146,9 @@
             android:text="Guardar"
             android:id="@+id/bguardar"
             android:textSize="18dp"
+
             android:layout_margin="15dp"
-            android:background="@color/darkviolet"
+            android:background="@drawable/redondear_boton"
             android:textColor="@color/white"
             android:onClick="OnclickGuardar"/>
     </LinearLayout>

@@ -128,7 +128,7 @@
                 android:onClick="OnClickInicioSesion"
                 android:text="INICIAR SESION"
                 android:textSize="18dp"
-                android:background="@color/darkviolet"
+                android:background="@drawable/redondear_boton"
                 android:textColor="@color/white"
                 android:layout_margin="15dp" />
             <LinearLayout
@@ -141,10 +141,11 @@
                 <com.facebook.login.widget.LoginButton
                     android:id="@+id/login_button"
                     android:layout_width="0dp"
+                    android:background="@drawable/redondear_boton"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_margin="10dp"
+                    android:layout_margin="8dp"
                     android:layout_gravity="center"/>
                 <com.google.android.gms.common.SignInButton
                     android:id="@+id/btnSignInGoogle"

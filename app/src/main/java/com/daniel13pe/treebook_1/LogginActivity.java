@@ -230,7 +230,7 @@ public class LogginActivity extends AppCompatActivity implements GoogleApiClient
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if(dataSnapshot.exists()){
-                            Toast.makeText(LogginActivity.this,"Ya Existe!!",Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(LogginActivity.this,"Ya Existe!!",Toast.LENGTH_SHORT).show();
                         }else{
                             Usuarios usuarios1 = new Usuarios(firebaseUser.getUid(),
                                     firebaseUser.getDisplayName(),

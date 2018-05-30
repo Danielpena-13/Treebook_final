@@ -83,8 +83,6 @@ public class AdapterRecorridos extends RecyclerView.Adapter<AdapterRecorridos.Re
         ArrayList<Recorridos> recorridos = new ArrayList<Recorridos>();
         Context ctx;
 
-
-
         public RecorridosViewHolder(View itemView) {
             super(itemView);
             tInicio = itemView.findViewById(R.id.tInicio);

@@ -52,8 +52,6 @@ public class MontallantasFragment extends Fragment {
         adapterMontallantas = new AdapterMontallantas(montallantasList, R.layout.cardview_detalle,getActivity());
         recyclerView.setAdapter(adapterMontallantas);
 
-
-
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
@@ -63,21 +61,17 @@ public class MontallantasFragment extends Fragment {
                 montallantasList.clear();
                 if(dataSnapshot.exists()){
                     for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+
                         Montallantas montallantas = snapshot.getValue(Montallantas.class);
                         montallantasList.add(montallantas);
                     }
                 }
                 adapterMontallantas.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
-
-
-
         return itemView;
     }
 
