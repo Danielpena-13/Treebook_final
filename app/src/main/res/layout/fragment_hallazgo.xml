@@ -4,17 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HallazgoFragment"
-    android:orientation="vertical">
+    android:background="@drawable/plantas"
+    android:orientation="vertical"
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:text="Fragmento mis Hallazgos" />
+        android:text="!Aquí encontrarás los Hallazgos que realices con el scanner QR o La Camara para la identificación de Hojas... \n
+Apende más de tu Entorno! ;)" />
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.CardView>
+        android:layout_height="wrap_content"
+        ></android.support.v7.widget.CardView>
 
 </FrameLayout>

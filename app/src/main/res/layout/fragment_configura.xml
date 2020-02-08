@@ -8,8 +8,22 @@
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30dp"
-        android:text="Fragmento Configuración" />
+        android:layout_height="wrap_content"
+        android:textSize="21dp"
+        android:gravity="center"
+        android:layout_marginTop="21dp"
+        android:textStyle="bold"
+        android:textColor="@color/gray"
+        android:text="Configuraciones Principales" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:background="@drawable/redondear_boton2"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="Cambiar de Usuario"
+        android:textSize="13dp"
+        android:id="@+id/bcambiar"
+        android:textColor="@color/white" />
 
 </FrameLayout>

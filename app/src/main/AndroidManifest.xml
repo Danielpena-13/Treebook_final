@@ -26,7 +26,6 @@
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -45,7 +44,7 @@
         <activity
             android:name=".QRActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".DetallesActivity"></activity>
+        <activity android:name=".DetallesActivity"/>
     </application>
 
 </manifest>

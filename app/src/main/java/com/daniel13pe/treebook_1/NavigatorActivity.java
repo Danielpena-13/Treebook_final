@@ -225,7 +225,7 @@ public class NavigatorActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    private void cerrarSesion() {
+    public void cerrarSesion() {
         firebaseAuth.signOut();
         if(Auth.GoogleSignInApi != null){
             Auth.GoogleSignInApi.signOut(gooogleApiClient).setResultCallback(new ResultCallback<Status>() {
@@ -269,12 +269,7 @@ public class NavigatorActivity extends AppCompatActivity
         } else if (id == R.id.nav_recorrido) {
             RecorridoFragment Navi3 = new RecorridoFragment();
             ft.replace(R.id.contenedorFrame, Navi3).commit();
-        } else if (id == R.id.nav_notifi) {
-            NotificacionFragment Navi4 = new NotificacionFragment();
-            ft.replace(R.id.contenedorFrame, Navi4).commit();
-            //Intent intent2 = new Intent(NavigatorActivity.this,MontallantasActivity.class);
-            //startActivity(intent2);
-        } else if (id == R.id.nav_confi) {
+        }  else if (id == R.id.nav_confi) {
             ConfiguraFragment Navi5 = new ConfiguraFragment();
             ft.replace(R.id.contenedorFrame, Navi5).commit();
             // Intent intent = new Intent(NavigatorActivity.this,PruebaActivity.class);
@@ -311,8 +306,8 @@ public class NavigatorActivity extends AppCompatActivity
                         if (isChecked) {
                             // Guardar indice seleccionado
                             itemsSeleccionados.add(which);
-                            Toast.makeText(NavigatorActivity.this, "Checks seleccionados:(" + itemsSeleccionados.size() + ")",
-                                    Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(NavigatorActivity.this, "Checks seleccionados:(" + itemsSeleccionados.size() + ")",
+                                   // Toast.LENGTH_SHORT).show();
                         } else if (itemsSeleccionados.contains(which)) {
                             // Remover indice sin selección
                             itemsSeleccionados.remove(Integer.valueOf(which));

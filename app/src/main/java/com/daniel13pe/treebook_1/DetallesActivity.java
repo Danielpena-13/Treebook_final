@@ -3,11 +3,13 @@ package com.daniel13pe.treebook_1;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +26,7 @@ public class DetallesActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
     private RecyclerView.Adapter adapterMontallantas;
+    private android.support.design.widget.FloatingActionButton fab3;
 
     private  android.support.design.widget.CollapsingToolbarLayout image;
     private TextView planta, fami,ncien,descrip;
@@ -43,7 +46,15 @@ public class DetallesActivity extends AppCompatActivity {
         ncien=findViewById(R.id.tNcien);
         descrip=findViewById(R.id.tDescrip);
         foto2 =findViewById(R.id.ifoto2);
+        fab3 = findViewById(R.id.fab3);
 
+        fab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v,"Proximante Para Compartir en Redes! ;)" , Snackbar.LENGTH_SHORT)
+                      .setAction("Action", null).show();
+            }
+        });
 
         if(!getIntent().equals(null)){
             Bundle extras = getIntent().getExtras();
